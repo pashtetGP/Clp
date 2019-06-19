@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="UserMacros">
+    <Have_CoinUtils_Props>yes</Have_CoinUtils_Props>
+    <Have_BuildTools_Props>yes</Have_BuildTools_Props>
+    <CoinUtilsDir>$(CoinRoot)\CoinUtils\CoinUtils\src</CoinUtilsDir>
+    <BuildToolsDir>$(CoinRoot)\BuildTools\headers</BuildToolsDir>
+  </PropertyGroup>
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <IncludePath>$(CoinUtilsDir);$(BuildToolsDir);$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(CoinRoot)\Clp\Clp\src;$(CoinUtilsDir);$(BuildToolsDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>CLP_EXTERN_C;CLPMSDLL;CLP_BUILD;WIN32;_LIB;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libCoinUtils.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(CoinLibDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="Have_CoinUtils_Props">
+      <Value>$(Have_CoinUtils_Props)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Have_BuildTools_Props">
+      <Value>$(Have_BuildTools_Props)</Value>
+    </BuildMacro>
+    <BuildMacro Include="BuildToolsDir">
+      <Value>$(BuildToolsDir)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>
